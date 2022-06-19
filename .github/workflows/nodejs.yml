@@ -4,27 +4,31 @@ on:
   - push
   - pull_request
 
-env:
-  CI: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [14.x, 16.x]
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Check out repository
+        uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: make install
-      - run: make lint
-      - run: make test
+      - name: Install dependencies
+        run: make install-deps
+
+      - name: Run linter  
+        run: make lint
+
+      - name: Run test
+        run: make test
+      
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v3.0.0
         env:
