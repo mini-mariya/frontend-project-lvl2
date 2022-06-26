@@ -9,19 +9,40 @@ const diffTree = (data1, data2) => {
     const value2 = data2[key];
 
     if (!_.has(data1, key)) {
-      return { name: key, value: value2, type: 'added' };
+      return {
+        name: key,
+        value: value2,
+        type: 'added',
+      };
     }
     if (!_.has(data2, key)) {
-      return { name: key, value: value1, type: 'deleted' };
+      return {
+        name: key,
+        value: value1,
+        type: 'deleted',
+      };
     }
     if (_.isObject(value1) && _.isObject(value2)) {
-      return { name: key, children: diffTree(value1, value2), type: 'nested' };
+      return {
+        name: key,
+        children: diffTree(value1, value2),
+        type: 'nested',
+      };
     }
     if (!_.isEqual(value1, value2)) {
-      return { name: key, firstValue: value1, secondValue: value2, type: 'changed' };
+      return {
+        name: key,
+        firstValue: value1,
+        secondValue: value2,
+        type: 'changed',
+      };
     }
 
-    return { name: key, value: value1, type: 'unchanged' };
+    return {
+      name: key,
+      value: value1,
+      type: 'unchanged',
+    };
   });
 };
 
