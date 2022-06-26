@@ -11,12 +11,12 @@ const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', 
 
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf8');
 
-test('compare json', () => {
+test('compare json stylish', () => {
   const expectedJson = readFile('expected.txt');
   expect(genDiff('./__fixtures__/file1.json', './__fixtures__/file2.json', 'stylish')).toBe(expectedJson);
 });
 
-test('compare yml', () => {
+test('compare yml stylish', () => {
   const expectedYml = readFile('expected.txt');
   expect(genDiff('./__fixtures__/file1.yml', './__fixtures__/file2.yaml', 'stylish')).toBe(expectedYml);
 });
