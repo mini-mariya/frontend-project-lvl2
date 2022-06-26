@@ -15,6 +15,7 @@ const stringify = (data, depth) => {
 const makeStylish = (diff) => {
   const iter = (tree, depth) => tree.map((node) => {
     const makeLine = (value, sign) => `${getIndent(depth)}${sign} ${node.name}: ${stringify(value, depth)}`;
+
     switch (node.type) {
       case 'added':
         return makeLine(node.value, '+');
@@ -31,12 +32,12 @@ const makeStylish = (diff) => {
           `${getIndent(depth)}  }`,
         ].join('\n')}`;
       default:
-        throw new Error(`Type ${node.type} is undefined`);
+        throw new Error(`Type: ${node.type} is undefined`);
     }
   });
 
-  const diffStylish = iter(diff, 1);
-  return ['{', ...diffStylish, '}'].join('\n');
+  const stylishDiff = iter(diff, 1);
+  return ['{', ...stylishDiff, '}'].join('\n');
 };
 
 export default makeStylish;
