@@ -6,7 +6,7 @@
 
 # Description:
 
-This repository contains a gendiff function that compares two files and shows the difference. The function works with *.yml* *.yaml* and *.json* formats.
+This repository contains a gendiff function that compares two files and shows the difference. The function works with *.yml*, *.yaml* and *.json* formats.
 
 ## Setup:
 
@@ -20,12 +20,12 @@ This repository contains a gendiff function that compares two files and shows th
 `gendiff -h`  
 
 ## To use gendiff, install the library as a dependency in any NPM package.
-`
+```sh
 import genDiff from '@hexlet/code';
 
 const diff = genDiff(filepath1, filepath2);
 console.log(diff);
-`
+```
 ## Demonstration of the gendiff utility:
 
 ### Comparison of flat files:
