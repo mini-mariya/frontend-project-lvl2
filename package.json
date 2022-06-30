@@ -1,7 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/mini-mariya/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/mini-mariya/frontend-project-lvl2/actions)",
+  "description": "This repository contains a gendiff function that compares two files and shows the difference. The function works with .yml, .yaml and .json formats.",
   "main": "src/index.js",
   "type": "module",
   "bin": {
