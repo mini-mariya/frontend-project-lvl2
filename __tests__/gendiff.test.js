@@ -41,4 +41,3 @@ test.each(tests)('gendiff tests', ({
   const result = genDiff(filepath1, filepath2, format);
   expect(result).toEqual(expected);
 });
-
