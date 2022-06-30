@@ -1,3 +1,4 @@
+import { test, expect } from '@jest/globals';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -10,25 +11,34 @@ const __dirname = path.dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf8');
+const tests = [
+  {
+    filename1: 'file1.json', filename2: 'file2.json', output: 'expected.txt', format: 'stylish',
+  },
+  {
+    filename1: 'file1.yml', filename2: 'file2.yaml', output: 'expected.txt', format: 'stylish',
+  },
+  {
+    filename1: 'file1.json', filename2: 'file2.json', output: 'expected-plain.txt', format: 'plain',
+  },
+  {
+    filename1: 'file1.yml', filename2: 'file2.yaml', output: 'expected-plain.txt', format: 'plain',
+  },
+  {
+    filename1: 'file1.json', filename2: 'file2.json', output: 'expected-outFormat.txt', format: 'json',
+  },
+  {
+    filename1: 'file1.yml', filename2: 'file2.yaml', output: 'expected-outFormat.txt', format: 'json',
+  },
+];
 
-test('compare json stylish', () => {
-  const expectedJson = readFile('expected.txt');
-  expect(genDiff('./__fixtures__/file1.json', './__fixtures__/file2.json', 'stylish')).toBe(expectedJson);
+test.each(tests)('gendiff tests', ({
+  filename1, filename2, output, format,
+}) => {
+  const filepath1 = getFixturePath(filename1);
+  const filepath2 = getFixturePath(filename2);
+  const expected = readFile(output);
+  const result = genDiff(filepath1, filepath2, format);
+  expect(result).toEqual(expected);
 });
 
-test('compare yml stylish', () => {
-  const expectedYml = readFile('expected.txt');
-  expect(genDiff('./__fixtures__/file1.yml', './__fixtures__/file2.yaml', 'stylish')).toBe(expectedYml);
-});
-
-test('compare plain format', () => {
-  const data = readFile('expected-plain.txt');
-  const expectedPlan = data.trim();
-  expect(genDiff('./__fixtures__/file1.json', './__fixtures__/file2.json', 'plain')).toBe(expectedPlan);
-});
-
-test('compare json format', () => {
-  const data = readFile('expected-outFormat.txt');
-  const expectedJson = data.trim();
-  expect(genDiff('./__fixtures__/file1.json', './__fixtures__/file2.json', 'json')).toBe(expectedJson);
-});
