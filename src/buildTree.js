@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const diffTree = (data1, data2) => {
+const buildTree = (data1, data2) => {
   const uniqKeys = _.union(_.keys(data1), _.keys(data2));
   const sortedKeys = _.sortBy(uniqKeys);
 
@@ -25,7 +25,7 @@ const diffTree = (data1, data2) => {
     if (_.isObject(value1) && _.isObject(value2)) {
       return {
         name: key,
-        children: diffTree(value1, value2),
+        children: buildTree(value1, value2),
         type: 'nested',
       };
     }
@@ -46,4 +46,4 @@ const diffTree = (data1, data2) => {
   });
 };
 
-export default diffTree;
+export default buildTree;
