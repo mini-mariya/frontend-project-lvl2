@@ -31,7 +31,7 @@ console.log(diff);
 ### Comparison of flat files:
 *.json* format:
 [![asciicast](https://asciinema.org/a/qOfxvpEzhCxogAjklecFocElH.svg)](https://asciinema.org/a/qOfxvpEzhCxogAjklecFocElH)
-*.yml* *.yaml* format:
+*.yml* and *.yaml* format:
 [![asciicast](https://asciinema.org/a/3xkdZTRBnJ4YxDbkgbYInk1DJ.svg)](https://asciinema.org/a/3xkdZTRBnJ4YxDbkgbYInk1DJ)
 
 ### Recursive comparison:
