@@ -4,7 +4,7 @@ import parse from './parsers.js';
 import buildTree from './buildTree.js';
 import formatOutput from './formatters/index.js';
 
-const getFormat = (filename) => filename.split('.')[1];
+const getFormat = (filename) => path.extname(filename).slice(1);
 
 const getFixturePath = (filename) => path.resolve(process.cwd(), filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
