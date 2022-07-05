@@ -1,7 +1,7 @@
 import makePlain from './plain.js';
 import makeStylish from './stylish.js';
 
-export default (data, format = 'stylish') => {
+export default (data, format) => {
   switch (format) {
     case 'stylish':
       return makeStylish(data);
