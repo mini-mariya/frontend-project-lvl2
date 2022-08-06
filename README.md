@@ -37,5 +37,5 @@ console.log(diff);
 ### Recursive comparison:
 [![asciicast](https://asciinema.org/a/uVkeDyPpkkAo8yHnuKzY7N9Zu.svg)](https://asciinema.org/a/uVkeDyPpkkAo8yHnuKzY7N9Zu)
 
-### Compare files in json and plain format:
+### Compare files in .json and .plain format:
 [![asciicast](https://asciinema.org/a/qhHIMIf71wYNfG9KHGtqM9kfy.svg)](https://asciinema.org/a/qhHIMIf71wYNfG9KHGtqM9kfy)
